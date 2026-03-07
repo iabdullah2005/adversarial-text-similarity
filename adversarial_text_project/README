@@ -1,0 +1,138 @@
+# Adversarial Robustness of Text Similarity Systems
+
+This project investigates how robust common text similarity methods are when academic text is modified while preserving its meaning.
+
+Many real-world systems (such as plagiarism detectors and document similarity tools) rely on metrics like **TF-IDF**, **n-gram overlap**, or **semantic embeddings**.
+The goal of this project is to experimentally study how these systems behave when text is altered through controlled perturbations.
+
+---
+
+# Project Goals
+
+The main objective is to understand how different similarity metrics respond to changes in text structure and wording.
+
+Key questions explored in this project include:
+
+* How sensitive are similarity systems to lexical changes?
+* Which similarity metrics are most robust to paraphrasing?
+* How much modification can be applied while preserving semantic meaning?
+
+---
+
+# Implemented Similarity Methods
+
+The project currently evaluates three similarity approaches:
+
+### 1. Jaccard Similarity
+
+Measures overlap between text using **n-grams**.
+This captures surface-level similarity and is highly sensitive to wording changes.
+
+### 2. TF-IDF Cosine Similarity
+
+Represents documents using **term frequency–inverse document frequency** vectors and measures similarity with cosine distance.
+
+This captures lexical similarity and is more robust than simple n-gram overlap.
+
+### 3. Sentence Embedding Similarity
+
+Uses **sentence embeddings** to represent semantic meaning and compares texts using cosine similarity.
+
+This approach focuses on **semantic similarity rather than exact wording**.
+
+---
+
+# Phase 1 — Baseline Similarity System
+
+In Phase 1 the project implemented and validated the three similarity models:
+
+* Jaccard similarity
+* TF-IDF cosine similarity
+* Sentence embedding similarity
+
+Baseline experiments confirmed expected behavior:
+
+* Identical texts produce similarity close to **1.0**
+* Unrelated texts produce **low similarity scores**
+
+This phase established a reliable similarity measurement framework.
+
+---
+
+# Phase 2 — Robustness Under Lexical Perturbation
+
+Phase 2 investigates how similarity metrics respond when text is modified while attempting to preserve meaning.
+
+Text perturbations include:
+
+* **POS-aware synonym replacement**
+* **Sentence reordering**
+
+These transformations introduce lexical changes without intentionally altering the underlying meaning.
+
+Experiments were conducted across multiple academic abstracts with different perturbation strengths.
+
+---
+
+# Key Observations
+
+Initial experiments reveal the following trends:
+
+* **Jaccard similarity decreases quickly** when wording changes.
+* **TF-IDF similarity remains relatively stable** under moderate synonym replacement.
+* **Semantic embedding similarity is highly robust** when meaning is preserved.
+
+These findings suggest that surface-level similarity metrics are more vulnerable to lexical perturbations than semantic similarity models.
+
+---
+
+# Repository Structure
+
+```
+data/           Processed dataset samples
+notebooks/      Experimental notebooks
+src/            Similarity model implementations
+results/        Generated experiment outputs
+```
+
+---
+
+# Technologies Used
+
+* Python
+* Pandas
+* NumPy
+* NLTK
+* Scikit-learn
+* Sentence Transformers
+* Matplotlib
+
+---
+
+# Future Work
+
+Planned improvements include:
+
+* Structural paraphrasing experiments
+* Larger-scale robustness evaluation
+* Hybrid similarity detection models
+* Analysis of adversarial paraphrasing strategies
+
+---
+
+# Research Motivation
+
+Understanding the robustness of similarity systems is important for applications such as:
+
+* plagiarism detection
+* document retrieval
+* academic integrity systems
+* semantic search engines
+
+This project explores how these systems behave under controlled modifications to text.
+
+---
+
+# License
+
+This project is for educational and research purposes.
