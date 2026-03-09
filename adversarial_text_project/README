@@ -72,6 +72,7 @@ Experiments were conducted across multiple abstracts with varying perturbation s
 
 ---
 
+
 # Key Observations
 
 Experimental results reveal several important trends:
@@ -83,6 +84,62 @@ Experimental results reveal several important trends:
 These findings highlight the difference between **surface-level similarity metrics** and **semantic similarity models**.
 
 ---
+
+# Phase 3 — Robustness Under Strong Paraphrasing
+
+Phase 3 extends the robustness analysis by introducing **strong paraphrasing transformations** generated using a pretrained language model.
+Unlike Phase 2, where lexical changes were created through synonym replacement and sentence reordering, Phase 3 focuses on **structural and semantic paraphrasing** that significantly alters wording and sentence structure while preserving meaning.
+
+To generate paraphrased text, a pretrained **T5-based paraphrasing model** was used. The model rewrites sentences by introducing new vocabulary, modifying grammatical structure, and reorganizing sentence patterns while maintaining the original semantic intent.
+
+Example transformation:
+
+Original sentence
+
+> The model predicts accurate results for complex tasks.
+
+Paraphrased sentence
+
+> The system produces precise outcomes even for challenging problems.
+
+Although the wording and structure differ considerably, the semantic meaning remains similar.
+
+---
+
+## Experimental Procedure
+
+For each abstract in the dataset:
+
+1. The original text was selected.
+2. A paraphrased version was generated using the pretrained paraphrasing model.
+3. Similarity between the original and paraphrased texts was measured using the three similarity methods developed in earlier phases:
+
+   * **Jaccard similarity**
+   * **TF-IDF cosine similarity**
+   * **Sentence embedding similarity**
+
+These experiments were repeated across multiple abstracts to obtain average similarity values.
+
+---
+
+## Key Observations
+
+The experiments revealed a clear pattern:
+
+* **Jaccard similarity decreased significantly**, reflecting its reliance on exact word overlap.
+* **TF-IDF similarity decreased moderately**, as many important topic words remained similar despite structural changes.
+* **Sentence embedding similarity remained high**, indicating that semantic representations effectively capture the underlying meaning of the text.
+
+---
+
+## Conclusion
+
+The results confirm that **surface-level similarity metrics struggle with strong paraphrasing**, while **semantic embedding models remain highly robust** when the meaning of the text is preserved.
+
+This demonstrates the importance of semantic representations in modern NLP systems designed for document comparison, semantic search, and paraphrase detection.
+
+Phase 3 therefore highlights the limitations of traditional lexical similarity metrics and reinforces the role of **semantic similarity models in robust text comparison systems**.
+
 
 # Repository Structure
 
@@ -130,6 +187,8 @@ Understanding the robustness of similarity systems is critical for applications 
 This project investigates how these systems respond to controlled textual modifications and evaluates their resilience to adversarial perturbations.
 
 ---
+
+
 
 # License
 
